@@ -99,11 +99,11 @@ if msg_binaria == recuperado_binario:
     print("Verificação: SUCESSO! Sequência binária recuperada perfeitamente.")
 
 # ==========================================
-# PARTE B - CIFRANDO UM ARQUIVO SINTÉTICO
+# Letra B
 # ==========================================
-print("\n" + "="*40)
-print(" PARTE B - CIFRANDO UM ARQUIVO SINTÉTICO")
-print("="*40)
+
+import os
+import hashlib
 
 # Nomes dos arquivos de trabalho
 arquivo_entrada = "Laboratorio_1/materiais_laboratorio_L1_OTP/materiais_l1_otp/registros_rede_sinteticos.csv"
@@ -111,14 +111,14 @@ arquivo_chave = "Laboratorio_1/materiais_laboratorio_L1_OTP/materiais_l1_otp/cha
 arquivo_cifrado = "Laboratorio_1/materiais_laboratorio_L1_OTP/materiais_l1_otp/arquivo.cifrado"
 arquivo_recuperado = "Laboratorio_1/materiais_laboratorio_L1_OTP/materiais_l1_otp/arquivo.recuperado"
 
-# 1. Leitura do arquivo original com "rb"
+# 1. Leitura do arquivo original com "rb" (Read Binary)
 with open(arquivo_entrada, "rb") as f:
     dados_originais = f.read()
 
 # 2. Gerar a chave (com o mesmo tamanho do arquivo lido)
 chave = gerar_chave(len(dados_originais))
 
-# 3. Gravar a chave em disco temporariamente com "wb"
+# 3. Gravar a chave em disco temporariamente com "wb" (Write Binary)
 with open(arquivo_chave, "wb") as f:
     f.write(chave)
 
@@ -147,23 +147,32 @@ print(f"Original:   {len(dados_originais)} bytes")
 print(f"Cifrado:    {len(dados_cifrados)} bytes")
 print(f"Recuperado: {len(dados_decifrados)} bytes")
 
-# Verificação Simples de Integridade
-print("\n--- Verificação de Integridade ---")
+# Verificação Criptográfica com SHA-256
+print("\n--- Verificação de Integridade (SHA-256) ---")
+
+# Calculando o hash em cima dos dados que lemos lá no início
+hash_original = hashlib.sha256(dados_originais).hexdigest()
 
 # Lendo o arquivo recuperado direto do disco com "rb" para provar que salvou certo
 with open(arquivo_recuperado, "rb") as f:
     dados_lidos_do_disco = f.read()
 
-# Comparando as variáveis de bytes diretamente 
-if dados_originais == dados_lidos_do_disco:
-    print("SUCESSO: Os dados recuperados do disco são exatamente iguais aos dados originais!")
-else:
-    print("FALHA: Os dados estão diferentes. O arquivo foi corrompido.")
+hash_recuperado = hashlib.sha256(dados_lidos_do_disco).hexdigest()
 
-# Remoção da cópia local da chave conforme exigência da professora
+print(f"Hash Original:   {hash_original}")
+print(f"Hash Recuperado: {hash_recuperado}")
+
+if hash_original == hash_recuperado:
+    print("\nSUCESSO: Os hashes coincidem! O arquivo foi cifrado e recuperado com perfeição.")
+else:
+    print("\nFALHA: Os hashes são diferentes. O arquivo foi corrompido.")
+
+# Remoção da cópia local da chave conforme o aviso
 if os.path.exists(arquivo_chave):
     os.remove(arquivo_chave)
     print("\nAviso: O arquivo 'chave.key' foi removido do diretório por segurança.")
+
+
 
 # ==========================================
 # Letra C
