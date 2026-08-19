@@ -1,0 +1,6 @@
+# Dados integralmente sintéticos para o Laboratório L1
+
+ASCII: SECURITY REQUIRES CORRECT KEY MANAGEMENT IN EVERY CONNECTION.
+UTF8: Cibersegurança exige atenção à geração, ao uso e ao descarte das chaves.
+M1: REUNIAO NA SALA 2077 AS TREZE HORAS. LEVE O RELATORIO L1.
+M2: SEMINAR NA SALA 3013 AS TREZE HORAS. LEVE O SEU NOTEBOOK.
