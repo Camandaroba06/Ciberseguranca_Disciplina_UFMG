@@ -1,0 +1,9 @@
+COMUNICADO SINTETICO — LABORATORIO L2
+
+O arquivo mensagem_confidencial.json deve ser cifrado por meio de criptografia
+hibrida. A chave de sessao deve ser aleatoria, usada uma unica vez e encapsulada
+com RSA-OAEP e SHA-256. A assinatura deste comunicado deve ser verificada antes
+de seu conteudo ser considerado integro.
+
+Este texto foi criado exclusivamente para fins didaticos.
+

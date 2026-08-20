@@ -1,0 +1,14 @@
+{
+  "classificacao": "DADO SINTETICO PARA ENSINO",
+  "projeto": "Laboratorio L2 de Criptografia Assimetrica",
+  "remetente": "estacao-alfa",
+  "destinatario": "estacao-beta",
+  "timestamp": "2026-08-20T19:15:00-03:00",
+  "mensagem": "A chave de sessao deve ser nova para cada operacao de cifracao.",
+  "controle": {
+    "algoritmos": ["RSA-OAEP-SHA256", "AES-256-GCM"],
+    "dados_reais": false,
+    "autorizacao": "uso exclusivo no laboratorio"
+  }
+}
+

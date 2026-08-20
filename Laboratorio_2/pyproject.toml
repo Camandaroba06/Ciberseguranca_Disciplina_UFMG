@@ -1,0 +1,19 @@
+[project]
+name = "laboratorio-2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Cristiano Gregory Monfrim Camandaroba", email = "cristianogregorymc@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "cryptography>=43.0,<47.0",
+]
+
+[project.scripts]
+laboratorio-2 = "laboratorio_2:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
